@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蛋糕</title>
+  <link rel="stylesheet" href="/css/shop.css">
+  <script src="/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+
+<body>
+
+  <div class="a">
+    蛋糕:<input type="text" id="queryInput" placeholder=" 请输入要查询的蛋糕品种">
+    <button class="c search" onclick="">查询</button>
+  </div>
+  <div>
+    <ul class="b3">
+      <input type="button" class="c1" value="新增" id="add_button">
+    </ul>
+  </div>
+
+  <div class="b2">
+    <table border="1" class="b1 table table-hover" id="b1">
+      <tr>
+        <th>蛋糕</th>
+        <th>品种</th>
+        <th>介绍</th>
+        <th>价格</th>
+        <th>功能</th>
+      </tr>
+      <tbody id="iUser">
+        <% list.forEach(i=>{%>
+          <tr>
+            <td class="hero">
+              <%= i.name%>
+            </td>
+            <td>
+              <%= i.brief%>
+            </td>
+            <td>
+              <%= i.taste%>
+            </td>
+            <td>
+              <%= i.price%>
+            </td>
+
+            <td>
+              <input type="button" value="删除" class="del_button del" data-id=<%=i.id %>>
+              <input type="button" value="修改" class="upd_button update" data-id1=<%=i.id %>>
+            </td>
+          </tr>
+          <%})%>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="7">
+            <input type="button" value="下一页" id="nextPage" />
+          </td>
+        </tr>
+      </tfoot>
+
+    </table>
+  </div>
+  <script src="/js/demo.js"></script>
+
+</body>
+
+</html>
