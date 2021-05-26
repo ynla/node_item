@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <script src="/js/jquery.min.js"></script>
   <title>
     <%-title%>
   </title>
@@ -1791,15 +1792,16 @@
   </div>
   <script>
     let num = 3;
-
     setInterval(() => {
       num--;
       if (num < 0) {
-        location.href = '<% -href %>'
+        location.href = '<%=href%>'
       } else {
         $('.num').html(num)
       }
     }, 1000)
+
+
   </script>
 
 </body>
