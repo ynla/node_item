@@ -13,10 +13,12 @@ $(function () {
             success: function (data) {
                 document.getElementById("iUser").innerHTML = data.map((i, ind) =>
                     ` <tr>
-                <td>${i.name}</td>
-                <td>${i.brief}</td>
-                <td>${i.taste}</td>
-                <td>${i.price}</td>
+                <td>${i.goods_name}</td>
+                <td>${i.goods_brief}</td>
+                <td>${i.goods_images}</td>
+                <td>${i.goods_oldprice}</td>
+                <td>${i.goods_newprice}</td>
+                <td>${i.goods_createtime}</td>
                 <td>
                      <input type="button" value="删除" class="del_button" data-id=${ind}/>
                 

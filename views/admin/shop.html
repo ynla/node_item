@@ -26,27 +26,34 @@
     <table border="1" class="b1 table table-hover" id="b1">
       <tr>
         <th>蛋糕</th>
-        <th>品种</th>
+        <th>图片位置</th>
         <th>介绍</th>
-        <th>价格</th>
+        <th>原本价格</th>
+        <th>折扣价格</th>
+        <th>上传时间</th>
         <th>功能</th>
       </tr>
       <tbody id="iUser">
         <% list.forEach(i=>{%>
           <tr>
             <td class="hero">
-              <%= i.name%>
+              <%= i.goods_name%>
             </td>
             <td>
-              <%= i.brief%>
+              <%= i.goods_images%>
             </td>
             <td>
-              <%= i.taste%>
+              <%= i.goods_brief%>
             </td>
             <td>
-              <%= i.price%>
+              <%= i.goods_oldprice%>
             </td>
-
+            <td>
+              <%= i.goods_newprice%>
+            </td>
+            <td>
+              <%= i.goods_createtime%>
+            </td>
             <td>
               <input type="button" value="删除" class="del_button del" data-id=<%=i.id %>>
               <input type="button" value="修改" class="upd_button update" data-id1=<%=i.id %>>

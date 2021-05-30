@@ -2,10 +2,18 @@
 
 var express = require('express');
 var router = express.Router();
+var sqlQuery = require('../../model/mysql')
 
 
-router.get('/', function (req, res, next) {
-    res.render('admin/index1')
+router.get('/', (req, res) => {
+    let sqlStr = 'select * from tab_goods order by(id) desc '
+    sqlQuery(sqlStr, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.render('admin/index1', {
+            list: result
+        });
+    })
 });
 
 

@@ -1515,6 +1515,7 @@ h6,
   padding: 45px 0 0;
   margin: 8px 0;
   white-space: nowrap;
+  position: relative;right: 90px;bottom: 20px;
 }
 
 @media all and (min-width: 768px) {

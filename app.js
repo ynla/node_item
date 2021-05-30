@@ -10,6 +10,7 @@ let session = require('express-session')
 
 //引入前端模块
 var adminRouter1 = require('./routes/admin/adminRouter1')
+
 //引入前端注册登录模块
 var loginRouter1 = require('./routes/login/loginRouter1')
 var registerRouter1 = require('./routes/login/registerRouter1')
