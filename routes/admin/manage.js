@@ -85,7 +85,7 @@ router.post('/update/:id', (req, res) => {
     sqlQuery(sqlStr, (err, result) => {
         if (err) throw err
         console.log(result)
-        let sqlStr1 = `INSERT INTO tab_goods(goods_name,goods_images,goods_brief,goods_oldprice,goods_newprice,goods_createtime) VALUES('${req.params.id}','${user.name}','${user.images}','${user.brief}','${user.oldprice}','${user.newprice}','${user.createtime})`
+        let sqlStr1 = `INSERT INTO tab_goods(goods_name,goods_images,goods_brief,goods_oldprice,goods_newprice,goods_createtime) VALUES('${user.name}','${user.images}','${user.brief}','${user.oldprice}','${user.newprice}','${time}')`
         sqlQuery(sqlStr1, (err, result) => {
             if (err) throw err
             console.log(result)
