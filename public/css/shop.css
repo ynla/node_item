@@ -78,3 +78,8 @@ input[type=text]:focus {
 }
 body {text-align: center;} table {margin: auto;}
 
+.img{
+    width: 160px;
+    height: 120px;
+}
+

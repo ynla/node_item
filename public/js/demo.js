@@ -21,7 +21,6 @@ $(function () {
                 <td>${i.goods_createtime}</td>
                 <td>
                      <input type="button" value="删除" class="del_button" data-id=${ind}/>
-                
                      <input type="button" value="修改" class="upd_button" data-id=${ind}/>
                 </td>
                 </tr>

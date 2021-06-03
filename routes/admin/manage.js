@@ -42,7 +42,7 @@ router.post('/add', (req, res) => {
 })
 
 //商品的搜索功能
-router.post('/shop/:message', (req, res) => {
+router.post('/shop', (req, res) => {
     let message = req.params.message
     let sqlStr = `SELECT * FROM tab_goods WHERE goods_name LIKE "%${message}%"`
     sqlQuery(sqlStr, (err, result) => {
@@ -85,7 +85,7 @@ router.post('/update/:id', (req, res) => {
     sqlQuery(sqlStr, (err, result) => {
         if (err) throw err
         console.log(result)
-        let sqlStr1 = `INSERT INTO tab_goods(goods_name,goods_images,goods_brief,goods_oldprice,goods_newprice,goods_createtime) VALUES('${user.name}','${user.images}','${user.brief}','${user.oldprice}','${user.newprice}','${time}')`
+        let sqlStr1 = `INSERT INTO tab_goods(goods_name,goods_images,goods_brief,goods_oldprice,goods_newprice,) VALUES('${user.name}','${user.images}','${user.brief}','${user.oldprice}','${user.newprice}','${time}')`
         sqlQuery(sqlStr1, (err, result) => {
             if (err) throw err
             console.log(result)

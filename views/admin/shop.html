@@ -12,10 +12,12 @@
 </head>
 
 <body>
+  <!-- <form action="/admin/shop " method="POST"> -->
   <div class="a">
     蛋糕:<input type="text" id="queryInput" placeholder=" 请输入要查询的蛋糕品种">
-    <button class="c search">查询</button>
+    <button type="button" class=" c search">查询</button>
   </div>
+  <!-- </form> -->
   <div>
     <ul class="b3">
       <input type="button" class="c1" value="新增" id="add_button">
@@ -40,7 +42,7 @@
               <%= i.goods_name%>
             </td>
             <td>
-              <%= i.goods_images%>
+              <img class="img" src="../../img/images/<%=i.goods_images%>">
             </td>
             <td>
               <%= i.goods_brief%>
@@ -72,6 +74,7 @@
     </table>
   </div>
   <script src="/js/demo.js"></script>
+
 
 </body>
 
