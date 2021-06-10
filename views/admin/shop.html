@@ -64,16 +64,62 @@
           <%})%>
       </tbody>
       <tfoot>
-        <tr>
-          <td colspan="7">
-            <input type="button" value="下一页" id="nextPage" />
-          </td>
-        </tr>
+        <span id="prev">上一页</span>
+        <span id="pages"></span>
+        <span id="next">下一页</span>
+        <input id="count" type="hidden" value="<%= count%>">
+        <input id="page" type="hidden" value="<%= page%>">
+
       </tfoot>
 
     </table>
   </div>
   <script src="http://localhost:3000/js/demo.js"></script>
+  <script>
+    var count = document.getElementById('count').value; // 总条数
+    var page = document.getElementById('page').value //当前的页码
+    console.log(count);
+    console.log(page);
+
+    var pages = document.getElementById('pages')
+    var prev = document.getElementById('prev')
+    var next = document.getElementById('next')
+
+    function createPages() {
+      pages.innerHTML = '';
+      for (var i = 0; i < Math.ceil(count / 5); i++) {
+        pages.innerHTML += `<button class= "btn" json-page="${i}">${i + 1}</button>`;
+
+      }
+    }
+    createPages();
+
+    //点击按钮进行翻页功能
+    $(function () {
+
+      $('.btn').on('click', function () {
+        let page = $(this).attr('json-page');
+        window.location.href = '/admin/shop/?page' + page;
+      })
+
+      //点击跳转去上一页
+      prev.onclick = function () {
+        if (page >= 1) {
+          page--;
+          window.location.href = '/admin/shop/?page=' + page;
+        }
+      }
+
+      //点击跳转下一页
+      next.onclick = function () {
+        if (page < Math.ceil(count / 5) - 1) {
+          page++;
+          window.location.href = '/admin/shop/?page=' + page;
+        }
+      }
+    })
+  </script>
+
   <script>
     //删除商品
     Array.from($('.del')).forEach(i =>

@@ -181,7 +181,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="catalog">
-                            <!-- <p class="title">新产品</p> -->
+
                             <div class="catalog_list">
                                 <div class="product-card product-card__main">
                                     <img src="img/images/<%= i.goods_images%>" alt="" class="product-card_image img">
@@ -211,7 +211,7 @@
                                                         <input class="number_input" value="1">
                                                         <button class="number_button">+</button>
                                                     </div>
-                                                    <button class="button button__filled">添加到购物车</button>
+                                                    <button class="button button__filled" id="buy">添加到购物车</button>
                                                 </div>
 
                                             </div>
@@ -255,11 +255,11 @@
             if (!counter.error) {
                 counter.start();
             } else {
-                // 鈥冣€僣onsole.error(counter.error);
+
             }
         }
     </script>
+    <script src="/js/demo.js"></script>
 </body>
 
 </html>
- 

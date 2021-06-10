@@ -5,17 +5,6 @@ var sd = require('silly-datetime');
 
 let time = sd.format(new Date(), 'YYYY-MM-DD HH:mm:ss')
 
-//展示后端页面的信息
-router.get('/shop', (req, res) => {
-    let sqlStr = 'select * from tab_goods order by(id) desc '
-    sqlQuery(sqlStr, (err, result) => {
-        if (err) throw err;
-        console.log(result);
-        res.render('admin/shop', {
-            list: result
-        });
-    })
-});
 
 
 //新增页面
@@ -45,10 +34,28 @@ router.post('/add', (req, res) => {
 router.post('/shop', (req, res) => {
     let message = req.body.queryInput
     let sqlStr = `SELECT * FROM tab_goods WHERE goods_name LIKE "%${message}%"`
-    sqlQuery(sqlStr, (err, result) => {
-        if (err) throw err;
-        console.log(result);
-        res.render('admin/shop', { list: result })
+    sqlQuery(sqlStr, (err, result1) => {
+        let page = (req.query.page == undefined) ? 0 : req.query.page;
+        let startPage = page * 5;
+        console.log(startPage);
+
+        //从数据库上拿数据
+        let count = 'select count(*) as count from tab_goods';
+        let sql = `select * from tab_goods order by(id) desc limit ${startPage},5 `;
+
+        sqlQuery(count, (err, result) => {
+            if (err) throw err;
+            let countNum = result[0].count;
+            sqlQuery(sql, (err, result) => {
+                if (err) throw err;
+                // console.log(result);
+                res.render('admin/shop', {
+                    list: result1,
+                    count: countNum,
+                    page: page
+                })
+            })
+        })
     })
 })
 
@@ -96,6 +103,32 @@ router.post('/update/:id', (req, res) => {
 
 })
 
+//分页功能
+router.get('/shop', (req, res) => {
+    console.log(req.query.page);
+    // 获取get后面的page参数值，没有page的数值的时候，给它的默认值为0;
+    let page = (req.query.page == undefined) ? 0 : req.query.page;
+    let startPage = page * 5;
+    console.log(startPage);
+
+    //从数据库上拿数据
+    let count = 'select count(*) as count from tab_goods';
+    let sql = `select * from tab_goods order by(id) desc limit ${startPage},5 `;
+
+    sqlQuery(count, (err, result) => {
+        if (err) throw err;
+        let countNum = result[0].count;
+        sqlQuery(sql, (err, result) => {
+            if (err) throw err;
+            // console.log(result);
+            res.render('admin/shop', {
+                list: result,
+                count: countNum,
+                page: page
+            })
+        })
+    })
+})
 
 
 module.exports = router;
